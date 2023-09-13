@@ -5,13 +5,13 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   return (
-    <header className="bg-custom1 p-4">
+    <header className="p-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div className="logo text-white text-2xl font-bold text-center md:text-left">
+        <div className="logo  text-2xl font-bold text-center md:text-left">
           Logo here
         </div>
         <nav className="md:block hidden">
-          <ul className="flex space-x-4 text-white">
+          <ul className="flex space-x-6 ">
             <li><a href="/">Home</a></li>
             <li><a href="/shop">Shop</a></li>
             <li><a href="/categories">Categories</a></li>
@@ -25,21 +25,21 @@ const Header: React.FC<HeaderProps> = () => {
           />
           <button
             type="submit"
-            className="bg-custom2 text-white px-3 py-1 rounded"
+            className="bg-custom2  px-3 py-1 rounded"
           >
             Search
           </button>
         </div>
         <div className="flex items-center mt-4 md:mt-0 md:space-x-2 space-x-4 justify-center">
           <div className="flex items-center space-x-3">
-            <a href="/cart" className="text-white relative flex items-center">
+            <a href="/cart" className=" relative flex items-center">
               <TiShoppingCart size={24} /> 
-              <div className="bg-red-500 p-2.5 text-white rounded-full w-4 h-4 flex items-center justify-center">0</div>
+              <div className="bg-red-500 p-2.5  rounded-full w-4 h-4 flex items-center justify-center">0</div>
               {/* cart item count */}
             </a>
           </div>
           
-          <button className='rounded border p-2 mt-4 text-white md:mt-0'>Signup</button>
+          <button className='rounded border p-2 mt-4  md:mt-0'>Signup</button>
         </div>
       </div>
     </header>

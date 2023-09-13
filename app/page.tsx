@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <>
       <Header />
-    <HeroSection />
+      <hr className="border-t-2 border-gray-400 mx-10"></hr>
+      <div className="mt-10"></div>
+      <HeroSection />
     </>
   );
 }
