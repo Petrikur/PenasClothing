@@ -1,4 +1,5 @@
 import HeroSection from "./components/Hero";
+import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import MegaMenu from "./components/layout/Megamenu";
 
@@ -10,6 +11,8 @@ export default function Home() {
       <MegaMenu />
       <div className="mt-10"></div>
       <HeroSection />
+      <div className="my-12"></div>
+      <Footer />
     </>
   );
 }

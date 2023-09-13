@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = () => {
           />
           <button
             type="submit"
-            className="bg-custom2  px-3 py-1 rounded"
+            className="bg-indigo-500  px-3 py-1 rounded"
           >
             Search
           </button>
