@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Product, Rating } from "@/typings";
+import { Product } from "@/typings";
 import ProductItem from "./ProductItem";
 
 function ProductList() {
@@ -24,21 +24,21 @@ function ProductList() {
   }, []);
 
   return (
-      <div className="flex justify-center items-center">
-        <ul className="grid grid-cols-4 space-y-4 space-x-4 items-center">
-          {products.map((product) => (
-            <ProductItem
-              id={product.id}
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              description={product.description}
-              rating={product.rating}
-              image={product.image}
-            />
-          ))}
-        </ul>
-      </div>
+    <div className="flex items-center">
+      <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12 mx-auto align-middle">
+        {products.map((product) => (
+          <ProductItem
+            id={product.id}
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            description={product.description}
+            rating={product.rating}
+            image={product.image}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 

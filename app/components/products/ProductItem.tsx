@@ -3,21 +3,18 @@ import type { Product } from "@/typings";
 
 const ProductItem = (props: Product) => {
   return (
-    <div
-      className="card w-96 max-h-[480px] bg-base-100 shadow-xl hover:transform
-    transition duration-300 hover:scale-105"
-    >
+    <div className="card w-96 bg-base-100 shadow-xl hover:transform transition duration-300 hover:scale-105 cursor-pointer">
       <figure>
-        <img src={props.image} className="object-cover" alt="Shoes" />
+        <img src={props.image} className="object-cover w-full h-48" alt="Shoes" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title mb-10">{props.title}</h2>
-
-        <p> ⭐ {props.rating.rate} / 5</p>
+      <div className="card-body flex flex-col justify-between">
+        <div>
+          <h2 className="card-title mb-2">{props.title}</h2>
+          <p>⭐ {props.rating.rate} / 5</p>
+        </div>
         <div className="card-actions justify-end">
-          <div className="flex"></div>
-          <p className="text-2xl font-bold">€ {props.price} </p>
-          <button className="btn btn-primary">Buy Now</button>
+          <p className="text-2xl font-bold">€ {props.price}</p>
+          <button className="btn btn-primary mt-2">Buy Now</button>
         </div>
       </div>
     </div>

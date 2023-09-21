@@ -50,7 +50,7 @@ const MegaMenu = () => {
   ];
 
   return (
-    <div className="relative mt-2">
+    <div className="relative mt-2 text-center">
       <div className="flex flex-col md:flex-row md:justify-center md:space-x-6">
         {menuData.map((category) => (
           <div
@@ -65,7 +65,7 @@ const MegaMenu = () => {
 
        {isMenuOpen && (
         <div
-          className={`mega-menu absolute top-14 p-8 bg-white shadow-lg z-30 ${
+          className={`mega-menu  absolute top-14 p-8 bg-white shadow-lg z-30 ${
             isMenuOpen === 'Designer' ? 'right-0' : 'left-1/2 transform -translate-x-1/2'
           }`}
           onMouseLeave={closeMenu}

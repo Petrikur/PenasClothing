@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="p-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="logo  text-2xl font-bold text-center md:text-left">
-          Logo here
+          Penas Clothing
         </div>
         <nav className="md:block hidden">
           <ul className="flex space-x-6">
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = () => {
             </a>
           </div>
 
-          <button className='rounded border p-2 mt-4  md:mt-0'>Signup</button>
+          <button className='rounded p-2 mt-4  md:mt-0 hover:bg-gray-100'>Signup</button>
         </div>
       </div>
     </header>
