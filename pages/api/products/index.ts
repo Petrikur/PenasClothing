@@ -28,8 +28,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else if (req.method === 'GET') {
     // GET request to retrieve all products
     try {
-      await connectDB();
-      const products = await Product.find();
+      // await connectDB();
+      // const products = await Product.find();
+
+      const response = await fetch("https://fakestoreapi.com/products")
+      const products = await response.json();
+      console.log(products)
+
       return res.status(200).json(products);
     } catch (error) {
       return res.status(500).json({ error: 'Error retrieving products' });
