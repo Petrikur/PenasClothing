@@ -8,13 +8,19 @@ export default function Home() {
   return (
     <>
       <Header />
-      <hr className="border-t-2 border-gray-400 mx-10"></hr>
+      <hr className="border-1 border-black mx-12"></hr>
       <MegaMenu />
       <div className="mt-10"></div>
       <HeroSection />
       <div className="my-12"></div>
 
+      <hr className="border-1 border-black mx-12"></hr>
+      <div className="my-12">
+        <h2 className="text-center text-3xl ">Popular products</h2>
+        <p className="text-center">See what other customers are bying</p>
+      </div>
       <ProductList />
+      <div className="mb-24 "></div>
       <Footer />
     </>
   );
