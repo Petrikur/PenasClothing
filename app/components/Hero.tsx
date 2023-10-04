@@ -4,8 +4,8 @@ import heroimg1 from '../../app/images/heroimg1.jpg';
 
 const HeroSection = () => {
   return (
-    <section className="relative mx-10">  
-    {/* from indigo to transparent */}
+    <section className="relative md:mx-10 mx-2">
+      {/* from indigo to transparent */}
       <div className="relative w-full h-96 md:h-[600px] lg:h-[700px]">
         <Image
           src={heroimg1}
@@ -16,7 +16,7 @@ const HeroSection = () => {
         />
       </div>
       {/* Text Overlay */}
-      <div className="absolute md:top-40 top-16 left-0 w-full h-full bg-gradient-to-r  p-8">
+      <div className="absolute md:top-40 top-16 left-0 w-full h-full bg-gradient-to-r p-8">
         <div className="container mx-auto">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
             Discover Your Style
