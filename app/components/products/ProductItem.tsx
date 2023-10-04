@@ -3,7 +3,7 @@ import type { Product } from "@/typings";
 
 const ProductItem = (props: Product) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl hover:transform transition duration-300 hover:scale-105 cursor-pointer">
+    <div className="card w-96 bg-base-100 min-h-[28rem] shadow-xl hover:transform transition duration-300 hover:scale-105 cursor-pointer">
       <figure>
         <img src={props.image} className="object-contain max-w-sm h-48" alt="Shoes" />
         </figure>

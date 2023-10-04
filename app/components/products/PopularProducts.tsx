@@ -1,14 +1,56 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useEffect, useState,  } from "react";
 import { Product } from "@/typings";
 import ProductItem from "./ProductItem";
+// import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import Slider from "react-slick";
+import "./slick.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function PopularProducts() {
   const [popularProducts, setPopularProducts] = useState<Product[]>([]);
 
+  const settings = {
+    dots: true,
+
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1724,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1370,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 982,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   useEffect(() => {
     async function fetchPopularProducts() {
       try {
-        const response = await fetch("/api/popular-products");
+        const response = await fetch("/api/products");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -23,20 +65,21 @@ function PopularProducts() {
   }, []);
 
   return (
-    <div className="flex items-center">
-      <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12 mx-auto align-middle">
-        {popularProducts.map((product) => (
-          <ProductItem
-            id={product.id}
-            key={product.id}
-            title={product.title}
-            price={product.price}
-            description={product.description}
-            rating={product.rating}
-            image={product.image}
-          />
+    <div className="md:mx-24 mx-2">
+      <Slider {...settings}>
+        {popularProducts.map((product, index) => (
+          <div key={index}>
+            <ProductItem
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              description={product.description}
+              rating={product.rating}
+              image={product.image}
+            />
+          </div>
         ))}
-      </ul>
+      </Slider>
     </div>
   );
 }
