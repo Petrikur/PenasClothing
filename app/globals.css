@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .loginInput {
+    @apply w-full px-4 py-2 border rounded-md focus:outline-dashed;
+  }
+ }
+
 /* 
 :root {
   --foreground-rgb: 0, 0, 0;
