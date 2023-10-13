@@ -4,6 +4,7 @@ import { Product } from "@/typings";
 import ProductItem from "../components/products/ProductItem";
 import Header from "../components/layout/Header";
 import MegaMenu from "../components/layout/Megamenu";
+import Link from "next/link";
 
 function ShopProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,15 +40,18 @@ function ShopProducts() {
       <div className="flex items-center">
         <ul className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12 mx-auto align-middle">
           {products.map((product) => (
-            <ProductItem
-              id={product.id}
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              description={product.description}
-              rating={product.rating}
-              image={product.image}
-            />
+             <Link key={product.id} href={`/Products/${product.id}`}>
+           
+               <ProductItem
+                 id={product.id}
+                 title={product.title}
+                 price={product.price}
+                 description={product.description}
+                 rating={product.rating}
+                 image={product.image}
+               />
+            
+           </Link>
           ))}
         </ul>
       </div>

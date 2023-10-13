@@ -7,13 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "GET") {
     try {
       const { id } = req.query;
+      console.log("id: ",id)
       if (!id || Array.isArray(id)) {
         return res.status(400).json({ error: "Invalid id" });
       }
 
-      await connectDB();
+      // await connectDB();
+      // const product = await Product.findById(id);
 
-      const product = await Product.findById(id);
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`)
+      const product = await response.json();
 
       if (!product) {
         return res.status(404).json({ error: "Product not found" });
