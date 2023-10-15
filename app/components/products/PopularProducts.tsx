@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import "./slick.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 
 function PopularProducts() {
   const [popularProducts, setPopularProducts] = useState<Product[]>([]);
@@ -68,7 +69,7 @@ function PopularProducts() {
     <div className="md:mx-24 mx-2">
       <Slider {...settings}>
         {popularProducts.map((product, index) => (
-          <div key={index}>
+          <Link href={`/Products/${product.id}`} key={index}>
             <ProductItem
               id={product.id}
               title={product.title}
@@ -77,7 +78,7 @@ function PopularProducts() {
               rating={product.rating}
               image={product.image}
             />
-          </div>
+          </Link>
         ))}
       </Slider>
     </div>
