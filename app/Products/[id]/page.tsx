@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import type { Product } from "@/typings";
 import Footer from "@/app/components/layout/Footer";
@@ -6,10 +6,11 @@ import Header from "@/app/components/layout/Header";
 import MegaMenu from "@/app/components/layout/Megamenu";
 import { ProductDetails } from "@/app/components/products/ProductDetails";
 import SizeSelector from "@/app/components/products/SizeSelector";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
 
 function ProductDetail(params: any) {
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedSize, setSelectedSize] = useState("");
   const productId = params.params.id;
 
   async function fetchProductDetails() {
@@ -58,16 +59,20 @@ function ProductDetail(params: any) {
             </p>
 
             <SizeSelector
-              sizes={['XS', 'S', 'M', 'L', "XL"]} 
+              sizes={["XS", "S", "M", "L", "XL"]}
               onSelectSize={setSelectedSize}
             />
-            <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-full">
-              Add to Cart
-            </button>
+            <div className="flex space-x-4 mt-6">
+              <button className="productButton">
+                <FaShoppingCart  /> Add to Cart
+              </button>
+              <button className="productButton font-normal">
+                <FaHeart /> Add to Wishlist
+              </button>
+            </div>
           </div>
         </div>
         <ProductDetails product={product} />
-      
       </div>
       <Footer />
     </>
