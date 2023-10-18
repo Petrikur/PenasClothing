@@ -51,6 +51,7 @@ function ProductDetail(params: any) {
           </div>
           <div>
             <h1 className="text-2xl font-semibold">{product.title}</h1>
+            <p className="font-bold my-2">⭐{product.rating.rate} / 5</p>
             <p className="text-gray-600">{product.description}</p>
             <p className="text-2xl text-blue-500 font-semibold mt-4">
               ${product.price}
