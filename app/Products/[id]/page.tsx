@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { Product } from "@/typings";
 import Footer from "@/app/components/layout/Footer";
 import Header from "@/app/components/layout/Header";
@@ -7,11 +7,13 @@ import MegaMenu from "@/app/components/layout/Megamenu";
 import { ProductDetails } from "@/app/components/products/ProductDetails";
 import SizeSelector from "@/app/components/products/SizeSelector";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useCart } from "@/app/context/CartContext";
 
 function ProductDetail(params: any) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState("");
   const productId = params.params.id;
+  const {addToCart,removeFromCart}  = useCart();
 
   async function fetchProductDetails() {
     try {
@@ -34,6 +36,10 @@ function ProductDetail(params: any) {
 
   if (!product) {
     return <div>Loading...</div>;
+  }
+
+  const handleAddToCart = () => {
+    addToCart(product)
   }
 
   return (
@@ -63,7 +69,7 @@ function ProductDetail(params: any) {
               onSelectSize={setSelectedSize}
             />
             <div className="flex space-x-4 mt-6">
-              <button className="productButton">
+              <button onClick={ handleAddToCart} className="productButton">
                 <FaShoppingCart  /> Add to Cart
               </button>
               <button className="productButton font-normal">

@@ -1,11 +1,29 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import { BsCart } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
+import { CartContext } from "@/app/context/CartContext";
 
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
+  const { cart } = useContext(CartContext);
+  const [cartCount, setCartCount] = useState(cart.length);
+  const [animateCart, setAnimateCart] = useState(false);
+
+  useEffect(() => {
+    setCartCount(cart.length);
+  }, [cart]);
+
+  useEffect(() => {
+    setAnimateCart(true);
+    const timeout = setTimeout(() => {
+      setAnimateCart(false);
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, [cartCount]);
+
   return (
     <header className="p-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -42,8 +60,6 @@ const Header: React.FC<HeaderProps> = () => {
           </button>
         </div>
         <div className="flex items-center mt-4 md:mt-0 md:space-x-2 space-x-4 justify-center">
-         
-
           <Link
             href={"/login"}
             className="rounded p-2 mt-4  md:mt-0 hover:bg-gray-100"
@@ -54,10 +70,13 @@ const Header: React.FC<HeaderProps> = () => {
           <div className="flex items-center justify-center space-x-6 ">
             <a href="/cart" className="relative flex items-center">
               <BsCart size={20} />
-              <div className="bg-indigo-500 p-2.5 rounded-full w-4 h-4 flex items-center justify-center">
-                0
+              <div
+                className={`bg-indigo-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center ${
+                  animateCart ? "animate-pulse" : ""
+                }`}
+              >
+                {cartCount}
               </div>
-              {/* cart item count */}
             </a>
           </div>
         </div>

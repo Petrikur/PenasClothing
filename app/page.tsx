@@ -3,11 +3,11 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import MegaMenu from "./components/layout/Megamenu";
 import PopularProducts from "./components/products/PopularProducts";
-import ProductList from "./components/products/ProductList";
 
 export default function Home() {
   return (
     <>
+   
       <Header />
       <hr className="border-1 border-black mx-12"></hr>
       <MegaMenu />
@@ -24,6 +24,7 @@ export default function Home() {
       <PopularProducts />
       <div className="mb-24 "></div>
       <Footer />
+
     </>
   );
 }
