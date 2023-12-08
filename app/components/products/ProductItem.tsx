@@ -14,7 +14,7 @@ const ProductItem = (props: Product) => {
         </div>
         <div className="card-actions justify-end">
           <p className="text-2xl font-bold">€ {props.price}</p>
-          <button className="btn btn-primary mt-2">Buy Now</button>
+          <button className="btn text-white mt-2 bg-blue-500 hover:bg-blue-500">Buy Now</button>
         </div>
       </div>
     </div>

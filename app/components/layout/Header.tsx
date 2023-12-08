@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = () => {
           </div>
           <button
             type="submit"
-            className="bg-indigo-500 text-white px-4 py-1 rounded"
+            className="bg-blue-500 text-white px-4 py-1 rounded"
           >
             <p>Search</p>
           </button>
@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = () => {
             <a href="/cart" className="relative flex items-center">
               <BsCart size={20} />
               <div
-                className={`bg-indigo-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center ${
+                className={`bg-blue-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center ${
                   animateCart ? "animate-pulse" : ""
                 }`}
               >

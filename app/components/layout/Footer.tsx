@@ -79,7 +79,7 @@ const Footer = () => {
               className="w-full border border-gray-400 px-3 py-2 focus:outline-none"
             />
           </div>
-          <button className="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-gray-800 focus:outline-none">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-gray-800 focus:outline-none">
             Subscribe
           </button>
         </div>
