@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = () => {
           </Link>
 
           <div className="flex items-center justify-center space-x-6 ">
-            <a href="/cart" className="relative flex items-center">
+            <a href="/Cart" className="relative flex items-center">
               <BsCart size={20} />
               <div
                 className={`bg-blue-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center ${
