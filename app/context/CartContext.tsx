@@ -24,22 +24,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<Product[]>([]);
 
-  // useEffect(() => {
-  //   async function fetchProducts() {
-  //     try {
-  //       const response = await fetch("/api/products");
-  //       const productsData = await response.json();
-  //       setProducts(productsData);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching products:", error);
-  //       setLoading(false);
-  //     }
-  //   }
-
-  //   fetchProducts();
-  // }, []);
-
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {

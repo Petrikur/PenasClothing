@@ -5,12 +5,27 @@ import ProductItem from "../components/products/ProductItem";
 import Header from "../components/layout/Header";
 import MegaMenu from "../components/layout/Megamenu";
 import Link from "next/link";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import Footer from "../components/layout/Footer";
 
 function ShopProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(9);
   const [filters, setFilters] = useState<any>({});
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const category = searchParams?.get("category");
+      const response = await fetch(`/api/products?category=${category}`);
+      const data = await response.json();
+      setProducts(data);
+    };
+
+    getProducts();
+  }, [searchParams]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -30,14 +45,17 @@ function ShopProducts() {
 
     fetchProducts();
   }, [filters]);
-  
-// Calculate the range of products to display on the current page
+
+  // Calculate the range of products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   // Function to handle page change
-  const handlePageChange = (pageNumber:number) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
@@ -45,27 +63,32 @@ function ShopProducts() {
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
   }
-
   return (
     <>
       <Header />
       <hr className="border-1 border-black mx-12"></hr>
       <MegaMenu />
       <div className="mt-10"></div>
-      <div className="flex items-center">
+      <div className="flex items-center my-14">
         <ul className="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12 mx-auto align-middle">
-          {currentProducts.map((product) => (
-            <Link key={product.id} href={`/Products/${product.id}`}>
-              <ProductItem
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                description={product.description}
-                rating={product.rating}
-                image={product.image}
-              />
-            </Link>
-          ))}
+          {currentProducts.length > 0 ? (
+            currentProducts.map((product) => (
+              <Link key={product.id} href={`/Products/${product.id}`}>
+                <ProductItem
+                  id={product.id}
+                  title={product.title}
+                  price={product.price}
+                  description={product.description}
+                  rating={product.rating}
+                  image={product.image}
+                />
+              </Link>
+            ))
+          ) : (
+            <div className="text-center col-span-2">
+              There is no items with this criteria.
+            </div>
+          )}
         </ul>
       </div>
 
@@ -82,6 +105,7 @@ function ShopProducts() {
           </button>
         ))}
       </div>
+      <Footer />
     </>
   );
 }
